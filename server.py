@@ -21,7 +21,7 @@ def main():
   port = int(os.environ.get("PORT", args.port))
   address = (host, port)
   print(f"adress - host: {host}, port: {port}")
-  print(f'host os: {os.environ.get("PORT")}')
+  print(f'host os: {os.environ.get("HOST")}')
 
   sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   sock.bind(address)
