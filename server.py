@@ -19,7 +19,7 @@ def main():
   args = parse_arguments()
   host = args.host
   port = int(os.environ.get("PORT", args.port))
-  address = (host, 80)
+  address = (host, 443)
   print(f"adress - host: {host}, port: {port}")
   print(f'host os: {os.environ.get("HOST")}')
 
