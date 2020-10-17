@@ -26,7 +26,9 @@ def main():
   print('Binding...')
   sock.bind(address)
   print('Binding ok')
+  print('Liten...')
   sock.listen(1)
+  print('Liten ok')
 
   while True:
     conn, addr = sock.accept()
@@ -38,6 +40,7 @@ def main():
     bytes_received = 0
 
     size = int(conn.recv(CHUNK_SIZE).decode())
+    print(f"Size - {size}")
     conn.send(b'start')
 
     print(f"Receiving...")
