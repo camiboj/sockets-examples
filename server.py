@@ -19,12 +19,13 @@ def main():
   args = parse_arguments()
   host = args.host
   port = int(os.environ.get("PORT", args.port))
-  address = (host, 443)
+  address = (host, port)
   print(f"adress - host: {host}, port: {port}")
-  print(f'host os: {os.environ.get("HOST")}')
 
   sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  print('Binding...')
   sock.bind(address)
+  print('Binding ok')
   sock.listen(1)
 
   while True:
