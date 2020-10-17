@@ -1,1 +1,1 @@
-web: python3 server.py -H https://sockets-examples.herokuapp.com -P 80
+web: python3 server.py -P 80
