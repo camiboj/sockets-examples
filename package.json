@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "start" : "python3 tcp-server.py -H 127.0.0.1 -P 8080"
+  }
+}
