@@ -18,7 +18,7 @@ def parse_arguments():
 def main():
   args = parse_arguments()
   address = (args.host, args.port)
-  logging.info(f"adress - host: {args.host}, port: {args.port}")
+  print(f"adress - host: {args.host}, port: {args.port}")
 
   sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   sock.bind(address)
@@ -53,5 +53,5 @@ def main():
   sock.close()
 
 if __name__ == "__main__":
-    logging.info("Inilcializando server...")
+    print("Inilcializando server...")
     main()
