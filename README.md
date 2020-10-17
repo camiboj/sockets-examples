@@ -11,19 +11,23 @@ Los archivos [client.py](client.py) y [server.py](server.py) proveen una impleme
 
 Para correr el servidor debemos ejecutar el siguiente comando:
 
-    python3 tcp-server.py -H <own-host> -P <own-port>
+    python3 server.py -H <own-host> -P <own-port>
 
 Los parámetros default son `own-host: 127.0.0.1` y `own-port: 8080`, por lo que localmente directamente podemos correr:
 
-   python3 tcp-server.py
+   python3 server.py
 
 ### Corriendo el cliente
 
 Para correr el cliente debemos ejecutar el siguiente comando:
 
-    python3 tcp-client.py -H <server-host> -P <server-port> -f <file>
+    python3 client.py -H <server-host> -P <server-port> -f <file>
 
 Los parámetros default son `server-host: 127.0.0.1` y `server-port: 8080`, por lo que localmente solo debemos especificar el archivo a enviar.
 En el repo esta incluido un archivo de ejemplo, por lo que, para utilizar ese archivo corremos:
 
-    python3 tcp-client.py -f ./example.txt
+    python3 client.py -f ./example.txt
+    
+Actualmente el servidor esta en heroku. Por ende para interactuar con esa instancia deberiamos correr:
+    
+    python3 client.py -H https://sockets-examples.herokuapp.com -P <port> -f ./example.txt

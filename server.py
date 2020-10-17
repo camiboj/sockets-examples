@@ -33,26 +33,24 @@ def main():
     if not conn:
       break
 
-    print("Accepted connection from {}".format(addr))
+    print(f"{get_timestamp()} - Accepted connection from {addr}")
 
-    filename = f"./file-{get_timestamp()}.bin"
-    f = open(filename, "wb")
     bytes_received = 0
 
     size = int(conn.recv(CHUNK_SIZE).decode())
     conn.send(b'start')
 
+    print(f"Receiving...")
     while bytes_received < size:
       data = conn.recv(CHUNK_SIZE)
       bytes_received += len(data)
-      f.write(data)
+      print(f"data: {data}")
 
-    print(f"Received file {filename}")
+    print(f"Receiving ok")
 
     # Send number of bytes received
     conn.send(str(bytes_received).encode())
 
-    f.close()
 
   sock.close()
 
