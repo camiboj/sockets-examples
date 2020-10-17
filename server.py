@@ -39,7 +39,9 @@ def main():
 
     bytes_received = 0
 
-    size = int(conn.recv(CHUNK_SIZE).decode())
+    _size = conn.recv(CHUNK_SIZE).decode()
+    print(f"Size? - {size}")
+    size = int()
     print(f"Size - {size}")
     conn.send(b'start')
 
