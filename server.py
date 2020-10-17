@@ -1,7 +1,7 @@
 import argparse
 import socket
 import time
-import logging
+import os
 from constants import CHUNK_SIZE
 
 def get_timestamp():
@@ -17,8 +17,11 @@ def parse_arguments():
 
 def main():
   args = parse_arguments()
-  address = (args.host, args.port)
-  print(f"adress - host: {args.host}, port: {args.port}")
+  host = args.host
+  port = int(os.environ.get("PORT", args.port))
+  address = (host, port)
+  print(f"adress - host: {host}, port: {port}")
+  print(f'host os: {os.environ.get("PORT")}')
 
   sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   sock.bind(address)
@@ -31,7 +34,7 @@ def main():
 
     print("Accepted connection from {}".format(addr))
 
-    filename = "./file-{}.bin".format(get_timestamp())
+    filename = f"./file-{get_timestamp()}.bin"
     f = open(filename, "wb")
     bytes_received = 0
 
@@ -43,7 +46,7 @@ def main():
       bytes_received += len(data)
       f.write(data)
 
-    print("Received file {}".format(filename))
+    print(f"Received file {filename}")
 
     # Send number of bytes received
     conn.send(str(bytes_received).encode())
